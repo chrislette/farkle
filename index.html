@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Farkle!</title>
+</head>
+<body>
+<h1>Farkle</h1>
+<p>
+    This is the future site of my Farkle dice game
+</p>
+</body>
+<script>
+    console.log("Hello, Chris")
+
+    function scoreRoll(diceArray) {
+        // return diceArray[0] + diceArray[1] + diceArray[2] + diceArray[3] + diceArray[4] + diceArray[5]
+        var score = 0
+        if (checkStraight(diceArray)) {
+            score += scoreStraight(diceArray)
+        }
+        return score
+    }
+
+    const myRoll = [1, 2, 3, 4, 5, 6]
+    const myRoll2 = [6, 6, 6, 2, 3, 4]
+
+    console.log("Test roll current score is: " + scoreRoll(myRoll))
+
+    console.log(myRoll2)
+    console.log(myRoll2.sort())
+    console.log(myRoll2)
+
+    function checkStraight(diceArray) {
+        diceArray.sort()
+        if (diceArray.toString() == [1, 2, 3, 4, 5, 6].toString()) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    console.log("Is myRoll a straight? " + checkStraight(myRoll))
+    console.log("Is myRoll2 a straight? " + checkStraight(myRoll2))
+
+    function scoreStraight(diceArray) {
+        diceArray.sort()
+        if (diceArray.toString() == [1, 2, 3, 4, 5, 6].toString()) {
+            return 1500;
+        } else {
+            return 0;
+        }
+    }
+
+    console.log("Score for myRoll being a straight? " + scoreStraight(myRoll))
+    console.log("Score for myRoll2 being a straight? " + scoreStraight(myRoll2))
+</script>
+</html>
