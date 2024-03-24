@@ -16,7 +16,7 @@
 
     function scoreRoll(diceArray) {
         // return diceArray[0] + diceArray[1] + diceArray[2] + diceArray[3] + diceArray[4] + diceArray[5]
-        var score = 0
+        let score = 0
         if (checkStraight(diceArray)) {
             score += scoreStraight(diceArray)
         }
@@ -25,6 +25,8 @@
 
     const myRoll = [1, 2, 3, 4, 5, 6]
     const myRoll2 = [6, 6, 6, 2, 3, 4]
+    const myRoll3 = [1, 2, 1, 2, 1, 1]
+    const myRoll4 = [1, 2, 3, 4]
 
     console.log("Test roll current score is: " + scoreRoll(myRoll))
 
@@ -55,5 +57,36 @@
 
     console.log("Score for myRoll being a straight? " + scoreStraight(myRoll))
     console.log("Score for myRoll2 being a straight? " + scoreStraight(myRoll2))
+
+    function diceArrayToDiceMap(diceArray) {
+        var diceMap = new Map()
+        diceArray.forEach(element => {
+            if (diceMap.has(element)) {
+                diceMap.set(element, diceMap.get(element) + 1)
+            } else {
+                diceMap.set(element, 1)
+            }
+        });
+        return diceMap
+    }
+
+    function checkFourAndPair(diceArray) {
+        var diceMap = diceArrayToDiceMap(diceArray)
+        console.log("in check four and a pair")
+        console.log(diceMap.values()) // Values has number of same die face
+        if (diceMap.size == 2 ) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    console.log("Is myRoll four and a pair? " + checkFourAndPair(myRoll))
+    console.log("Is myRoll3 four and a pair? " + checkFourAndPair(myRoll3))
+    console.log("Is myRoll4 four and a pair? " + checkFourAndPair(myRoll4))
+
+    console.log(diceArrayToDiceMap(myRoll))
+    console.log(diceArrayToDiceMap(myRoll3))
+    console.log(diceArrayToDiceMap(myRoll4))
 </script>
 </html>
