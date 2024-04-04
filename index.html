@@ -10,83 +10,14 @@
 <p>
     This is the future site of my Farkle dice game
 </p>
+<p>
+    <img src="dice/1.png" width="100" title="1">
+    <img src="dice/2.png" width="100" title="2">
+    <img src="dice/3.png" width="100" title="3">
+    <img src="dice/4.png" width="100" title="4">
+    <img src="dice/5.png" width="100" title="5">
+    <img src="dice/6.png" width="100" title="6">
+</p>
 </body>
-<script>
-    console.log("Hello, Chris")
-
-    function scoreRoll(diceArray) {
-        // return diceArray[0] + diceArray[1] + diceArray[2] + diceArray[3] + diceArray[4] + diceArray[5]
-        let score = 0
-        if (checkStraight(diceArray)) {
-            score += scoreStraight(diceArray)
-        }
-        return score
-    }
-
-    const myRoll = [1, 2, 3, 4, 5, 6]
-    const myRoll2 = [6, 6, 6, 2, 3, 4]
-    const myRoll3 = [1, 2, 1, 2, 1, 1]
-    const myRoll4 = [1, 2, 3, 4]
-
-    console.log("Test roll current score is: " + scoreRoll(myRoll))
-
-    console.log(myRoll2)
-    console.log(myRoll2.sort())
-    console.log(myRoll2)
-
-    function checkStraight(diceArray) {
-        diceArray.sort()
-        if (diceArray.toString() == [1, 2, 3, 4, 5, 6].toString()) {
-            return true;
-        } else {
-            return false;
-        }
-    }
-
-    console.log("Is myRoll a straight? " + checkStraight(myRoll))
-    console.log("Is myRoll2 a straight? " + checkStraight(myRoll2))
-
-    function scoreStraight(diceArray) {
-        diceArray.sort()
-        if (diceArray.toString() == [1, 2, 3, 4, 5, 6].toString()) {
-            return 1500;
-        } else {
-            return 0;
-        }
-    }
-
-    console.log("Score for myRoll being a straight? " + scoreStraight(myRoll))
-    console.log("Score for myRoll2 being a straight? " + scoreStraight(myRoll2))
-
-    function diceArrayToDiceMap(diceArray) {
-        var diceMap = new Map()
-        diceArray.forEach(element => {
-            if (diceMap.has(element)) {
-                diceMap.set(element, diceMap.get(element) + 1)
-            } else {
-                diceMap.set(element, 1)
-            }
-        });
-        return diceMap
-    }
-
-    function checkFourAndPair(diceArray) {
-        var diceMap = diceArrayToDiceMap(diceArray)
-        console.log("in check four and a pair")
-        console.log(diceMap.values()) // Values has number of same die face
-        if (diceMap.size == 2 ) {
-            return true;
-        } else {
-            return false;
-        }
-    }
-
-    console.log("Is myRoll four and a pair? " + checkFourAndPair(myRoll))
-    console.log("Is myRoll3 four and a pair? " + checkFourAndPair(myRoll3))
-    console.log("Is myRoll4 four and a pair? " + checkFourAndPair(myRoll4))
-
-    console.log(diceArrayToDiceMap(myRoll))
-    console.log(diceArrayToDiceMap(myRoll3))
-    console.log(diceArrayToDiceMap(myRoll4))
-</script>
+<script src="src/app.js"></script>
 </html>
