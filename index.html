@@ -16,14 +16,63 @@
 <p>
     This is the future site of my Farkle dice game
 </p>
-<p>
-    <img id="die1" src="dice/1.png" width="100" title="1">
-    <img id="die2" src="dice/2.png" width="100" title="2">
-    <img id="die3" src="dice/3.png" width="100" title="3">
-    <img id="die4" src="dice/4.png" width="100" title="4">
-    <img id="die5" src="dice/5.png" width="100" title="5">
-    <img id="die6" src="dice/6.png" width="100" title="6">
-</p>
+
+<button type="submit" class="btn btn-primary" onclick="doRoll(event)">Roll</button>
+<!-- <button type="submit" class="btn btn-primary">Roll</button> -->
+
+<div class="container">
+    <div class="row">
+        <!-- <input type="checkbox" id="die1Box" checked /> -->
+        <div class="col-sm">
+            <input type="checkbox" id="die1Box"/>
+        </div>
+        <div class="col-sm">
+            <img id="die1" src="dice/1.png" width="100" title="1">
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm">
+            <input type="checkbox" id="die2Box"/>
+        </div>
+        <div class="col-sm">
+            <img id="die2" src="dice/2.png" width="100" title="2">
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm">
+            <input type="checkbox" id="die3Box"/>
+        </div>
+        <div class="col-sm">
+            <img id="die3" src="dice/3.png" width="100" title="3">
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm">
+            <input type="checkbox" id="die4Box"/>
+        </div>
+        <div class="col-sm">
+            <img id="die4" src="dice/4.png" width="100" title="4">
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm">
+            <input type="checkbox" id="die5Box"/>
+        </div>
+        <div class="col-sm">
+            <img id="die5" src="dice/5.png" width="100" title="5">
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm">
+            <input type="checkbox" id="die6Box"/>
+        </div>
+        <div class="col-sm">
+            <img id="die6" src="dice/6.png" width="100" title="6">
+        </div>
+    </div>
+
+</div>
+
 </body>
 <script src="src/app.js"></script>
 <script>
@@ -31,7 +80,7 @@
         return Math.floor(Math.random() * 6) + 1;
     }
 
-window.onload = function() {
+function doRoll() {
 
     const dice = []
 
