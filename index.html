@@ -17,14 +17,12 @@
     This is the future site of my Farkle dice game
 </p>
 
-<button type="submit" class="btn btn-primary" onclick="doRoll(event)">Roll</button>
-<!-- <button type="submit" class="btn btn-primary">Roll</button> -->
+<button type="submit" class="btn btn-primary rounded-pill" onclick="doRoll(event)">Roll</button>
 
 <div class="container">
     <div class="row">
-        <!-- <input type="checkbox" id="die1Box" checked /> -->
         <div class="col-sm">
-            <input type="checkbox" id="die1Box"/>
+            <input type="checkbox" id="die1Box" checked/>
         </div>
         <div class="col-sm">
             <img id="die1" src="dice/1.png" width="100" title="1">
@@ -32,7 +30,7 @@
     </div>
     <div class="row">
         <div class="col-sm">
-            <input type="checkbox" id="die2Box"/>
+            <input type="checkbox" id="die2Box" checked/>
         </div>
         <div class="col-sm">
             <img id="die2" src="dice/2.png" width="100" title="2">
@@ -40,7 +38,7 @@
     </div>
     <div class="row">
         <div class="col-sm">
-            <input type="checkbox" id="die3Box"/>
+            <input type="checkbox" id="die3Box" checked/>
         </div>
         <div class="col-sm">
             <img id="die3" src="dice/3.png" width="100" title="3">
@@ -48,7 +46,7 @@
     </div>
     <div class="row">
         <div class="col-sm">
-            <input type="checkbox" id="die4Box"/>
+            <input type="checkbox" id="die4Box" checked/>
         </div>
         <div class="col-sm">
             <img id="die4" src="dice/4.png" width="100" title="4">
@@ -56,7 +54,7 @@
     </div>
     <div class="row">
         <div class="col-sm">
-            <input type="checkbox" id="die5Box"/>
+            <input type="checkbox" id="die5Box" checked/>
         </div>
         <div class="col-sm">
             <img id="die5" src="dice/5.png" width="100" title="5">
@@ -64,7 +62,7 @@
     </div>
     <div class="row">
         <div class="col-sm">
-            <input type="checkbox" id="die6Box"/>
+            <input type="checkbox" id="die6Box" checked/>
         </div>
         <div class="col-sm">
             <img id="die6" src="dice/6.png" width="100" title="6">
@@ -82,23 +80,25 @@
 
 function doRoll() {
 
-    const dice = []
+    for (let index = 1; index < 7; index++) {
 
-    dice.push(roleSingleDie());
-    dice.push(roleSingleDie());
-    dice.push(roleSingleDie());
-    dice.push(roleSingleDie());
-    dice.push(roleSingleDie());
-    dice.push(roleSingleDie());
 
-    dice.forEach((faceValue, index) => {
-        var elementNumber = index + 1;
+        if (document.getElementById(`die${index}Box`).checked) {
+            var faceValue = roleSingleDie();
 
-        var img = document.getElementById(`die${elementNumber}`);
+            var img = document.getElementById(`die${index}`);
 
-        img.src = `dice/${faceValue}.png`;
-        img.title = `${faceValue}`;
-    });
+            img.src = `dice/${faceValue}.png`;
+            img.title = `${faceValue}`;
+        }
+    }
+
+    document.getElementById("die1Box").checked = false;
+    document.getElementById("die2Box").checked = false;
+    document.getElementById("die3Box").checked = false;
+    document.getElementById("die4Box").checked = false;
+    document.getElementById("die5Box").checked = false;
+    document.getElementById("die6Box").checked = false;
 }
 
 </script>
