@@ -1,0 +1,16 @@
+.score-item-block {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+  }
+  
+  .score-checkbox {
+    width: 25px;
+    display: flex;
+  }
+  
+  .score-score,
+  .score-user {
+    width: 200px;
+  }

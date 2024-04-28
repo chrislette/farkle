@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <link rel="stylesheet" href="./css/styles.css"/>
+    <link rel="stylesheet" href="./css/flexbox.css"/>
+    <title>About</title>
+</head>
+<body>
+<header>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="#"></a>
+        <ul class="navbar-nav">
+            <li class="nav-item active"><a class="nav-link" href="/">Home</a></li>
+            <li class="nav-item"><a class="nav-link" href="./about.html">About</a></li>
+            <li class="nav-item"><a class="nav-link" href="./scores/scores.html">Scores</a></li>
+        </ul>
+        <div>
+            <!-- <a id="login" href="/login.html">Login</a> -->
+            <!-- <a id="logout" href="" onclick="doLogout(event)">Logout</a> -->
+        </div>
+        <a id="login" href="/login.html">Login</a>
+    </nav>
+</header>
+
+<div class="container-fluid">
+    <div class="center">
+        <button type="submit" class="btn btn-primary rounded-pill" onclick="doRoll()">Roll</button>
+
+        <div class="container">
+            <div class="row">
+                <!-- <div class="col-sm"> -->
+                    <input type="checkbox" id="die1Box" checked/>
+                <!-- </div> -->
+                <!-- <div class="col-sm"> -->
+                    <img id="die1" src="./dice/1.png" width="100" title="1">
+                <!-- </div> -->
+            </div>
+            <div class="row">
+                <!-- <div class="col-sm"> -->
+                    <input type="checkbox" id="die2Box" checked/>
+                <!-- </div> -->
+                <!-- <div class="col-sm"> -->
+                    <img id="die2" src="./dice/2.png" width="100" title="2">
+                <!-- </div> -->
+            </div>
+            <div class="row">
+                <!-- <div class="col-sm"> -->
+                    <input type="checkbox" id="die3Box" checked/>
+                <!-- </div> -->
+                <!-- <div class="col-sm"> -->
+                    <img id="die3" src="./dice/3.png" width="100" title="3">
+                <!-- </div> -->
+            </div>
+            <div class="row">
+                <!-- <div class="col-sm"> -->
+                    <input type="checkbox" id="die4Box" checked/>
+                <!-- </div> -->
+                <!-- <div class="col-sm"> -->
+                    <img id="die4" src="./dice/4.png" width="100" title="4">
+                <!-- </div> -->
+            </div>
+            <div class="row">
+                <!-- <div class="col-sm"> -->
+                    <input type="checkbox" id="die5Box" checked/>
+                <!-- </div> -->
+                <!-- <div class="col-sm"> -->
+                    <img id="die5" src="./dice/5.png" width="100" title="5">
+                <!-- </div> -->
+            </div>
+            <div class="row">
+                <!-- <div class="col-sm"> -->
+                    <input type="checkbox" id="die6Box" checked/>
+                <!-- </div> -->
+                <!-- <div class="col-sm"> -->
+                    <img id="die6" src="./dice/6.png" width="100" title="6">
+                <!-- </div> -->
+            </div>
+
+        </div>
+
+        <button type="submit" class="btn btn-primary rounded-pill" onclick="doScore()">Score</button>
+    </div>
+</div>
+
+<script src="./lib/api.config.js"></script>
+<script src="./lib/simple-storage.js"></script>
+<script src="./lib/service-helpers.js"></script>
+<script src="./lib/auth.service.js"></script>
+<script src="./lib/auth.js"></script>
+<script src="./scores/scores-api.service.js"></script>
+<script src="./scores/scores.service.js"></script>
+<script src="./scores/add-score.js"></script>
+<script src="./app.js"></script>
+
+<script>
+function roleSingleDie() {
+    return Math.floor(Math.random() * 6) + 1;
+}
+
+function doRoll() {
+
+    for (let index = 1; index < 7; index++) {
+
+
+        if (document.getElementById(`die${index}Box`).checked) {
+            var faceValue = roleSingleDie();
+
+            var img = document.getElementById(`die${index}`);
+
+            img.src = `dice/${faceValue}.png`;
+            img.title = `${faceValue}`;
+        } else {
+            document.getElementById(`die${index}Box`).disabled = true;
+        }
+    }
+
+    document.getElementById("die1Box").checked = false;
+    document.getElementById("die2Box").checked = false;
+    document.getElementById("die3Box").checked = false;
+    document.getElementById("die4Box").checked = false;
+    document.getElementById("die5Box").checked = false;
+    document.getElementById("die6Box").checked = false;
+}
+
+function doScore() {
+
+    var score = 0;
+    
+    for (let index = 1; index < 7; index++) {
+        score += parseInt(document.getElementById(`die${index}`).title);
+    }
+
+        const user = getStorage("username");
+        const time_scored = new Date().toISOString();
+        const newScore = { score, user, time_scored };
+
+    scoresService.addScore(newScore);
+
+    window.location.href="./scores/scores.html";
+}
+
+</script>
+
+</body>
+</html>

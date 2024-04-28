@@ -1,0 +1,75 @@
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" /> 
+        <link rel="stylesheet" href="../css/styles.css" />
+        <link rel="stylesheet" href="../css/flexbox.css" />
+        <link 
+            rel="stylesheet" 
+            href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" 
+            integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" 
+            crossorigin="anonymous"
+        />
+        <title>Scores</title> 
+    </head>
+    <body>
+        <header>
+            <nav class="navbar navbar-expand-lg navbar-light bg-light">
+                <a class="navbar-brand" href="#"></a>
+                <ul class="navbar-nav">
+                    <li class="nav-item" active><a class="nav-link" href="/">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../about.html">About</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../game.html">Play</a></li>
+                </ul>
+                <div>
+                    <a id="login" href="/login.html">Login</a>
+                    <a id="logout" href="" onclick="doLogout(event)">Logout</a>
+                </div>
+            </nav>
+        </header>
+
+        <div class="container">
+            <div class="score-form">
+                <!-- <form> -->
+                    <!-- <div class="form-row">
+                        <div class="col-md-6">
+                            <label class="sr-only" for="formInputScoreScore">Score</label>
+                            <input 
+                                id="formInputScoreScore"
+                                class="form-control"
+                                type="text"
+                                name="score-score"
+                                placeholder="Score score"
+                            />
+                        </div>
+                        <div class="col-md-3">
+                            <button
+                                type="submit"
+                                class="btn btn-primary"
+                                onclick="doAddScore(event)"
+                            >ADD</button>
+                        </div>
+                    </div>
+                </form>
+            </div> -->
+            <div id="scores">
+                <div>Loading...</div>
+            </div>
+        </div>
+
+        <footer>
+            <p>Author: <a href="https://github.com/chrislette">Chris Jordan</a></p>
+        </footer>
+
+        <script src="../lib/api.config.js"></script>
+        <script src="../lib/simple-storage.js"></script>
+        <script src="../lib/service-helpers.js"></script>
+        <script src="../lib/auth.service.js"></script>
+        <script src="../lib/auth.guard.js"></script>
+        <script src="./scores-api.service.js"></script>
+        <script src="./scores.service.js"></script>
+        <script src="./add-score.js"></script>
+        <script src="../lib/auth.js"></script>
+        <script src="../app.js"></script>
+    </body>
+</html>
